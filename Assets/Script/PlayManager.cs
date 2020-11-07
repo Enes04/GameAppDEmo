@@ -41,11 +41,11 @@ public class PlayManager : MonoBehaviour
             AudioListener.volume = 1;
         }
 
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 2; i++)
         {
             CreateFloor();
         }
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 4; i++)
         {
             SpawnFloor();
         }
@@ -75,9 +75,11 @@ public class PlayManager : MonoBehaviour
         temp.SetActive(true);                       
         temp.transform.position = CurretFloor.transform.GetChild(0).GetChild(0).position;
         CurretFloor = temp;
-        for (int i = 0; i < temp.transform.GetChild(0).childCount; i++)
+
+        for (int i = 0; i < temp.transform.GetChild(0).GetChild(1).childCount; i++)
         {
-            temp.transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
+               
+         temp.transform.GetChild(0).GetChild(1).GetChild(i).GetChild(Random.Range(0,3)).gameObject.SetActive(true);
         }
     }
    
@@ -85,7 +87,7 @@ public class PlayManager : MonoBehaviour
     {
         Score = Score + point;
         ScoreText.text = "Toplanan Obje Sayisi: " + Score.ToString();
-        PrograssBar.fillAmount = Score / 10;
+        PrograssBar.fillAmount = Score / 100;
         if(PrograssBar.fillAmount == 1)
         {
             Pause();

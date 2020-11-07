@@ -24,14 +24,13 @@ public class ReklamRewardedVideo : MonoBehaviour
         reklamObjesi.LoadAd(reklamIstegi, "ca-app-pub-3940256099942544/5224354917");
     }
 
-    private void OyuncuyuOdullendir(object sender, Reward odul)
+    private void OyuncuyuOdullendir(object sender, EventArgs odul)
     {
-        Debug.Log("Ödül türü: " + odul.Type);
-        altin += (int)odul.Amount;
+        GameManager.Instance.HearthAdd();
     }
     public void ReklamGostr()
     {
         reklamObjesi.Show();
-        GameManager.Instance.HearthAdd();
+       
     }
 }
